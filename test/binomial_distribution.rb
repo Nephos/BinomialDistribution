@@ -15,6 +15,14 @@ class TestBinomialDistribution < Test::Unit::TestCase
     assert_equal 0.4, Math.binomial_distribution(0.4, 1, tries: 1)
     assert_equal 0.4, Math.binomial_distribution(1, 0.4, 1)
     assert_equal 0.4, Math.binomial_distribution(1, 1, probability: 0.4)
-end
+  end
+
+  def test_enum
+    t3 = Math.binomial_distribution(tries: 10, probability: 0.1, success: 3)
+    t2 = Math.binomial_distribution(tries: 10, probability: 0.1, success: 2)
+    t1 = Math.binomial_distribution(tries: 10, probability: 0.1, success: 1)
+    tt = Math.binomial_distribution(tries: 10, probability: 0.1, success: [1,2,3])
+    assert_equal t3 + t2 + t1, tt
+  end
 
 end

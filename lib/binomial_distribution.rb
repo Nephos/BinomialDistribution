@@ -66,7 +66,7 @@ class Binomial
   end
 
   private def distribute_enumerable k
-    k.map{|p| calc(p) }.inject(&:+)
+    k.map{|p| distribute_integer(p) }.reduce(&:+)
   end
 
   private def distribute_integer k
